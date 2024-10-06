@@ -5,5 +5,7 @@ g++ main.cpp SingleCore/D2Q9.cpp SingleCore/BoltzmannSolver.cpp -o LBM  \
 -L./External/freeglut/lib \
 -L./External/glew/lib \
 -lm -lGL -lGLU -lglut -lGLEW
- 
+
+g++ main.cpp SingleCore/D2Q9.cpp SingleCore/BoltzmannSolver.cpp -o LBM -I./External/freeglut/include -I./External/glew/include -I./SingleCore -L./External/freeglut/lib -L./External/glew/lib -lm -lGL -lGLU -lglut -lGLEW
+
 ./LBM

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LatticeBoltzmann_CUDA", "LatticeBoltzmann_CUDA.vcxproj", "{7BC75D8F-F2BF-4D8B-B200-6AA2BF72678F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BC75D8F-F2BF-4D8B-B200-6AA2BF72678F}.Debug|x64.ActiveCfg = Debug|x64
+		{7BC75D8F-F2BF-4D8B-B200-6AA2BF72678F}.Debug|x64.Build.0 = Debug|x64
+		{7BC75D8F-F2BF-4D8B-B200-6AA2BF72678F}.Release|x64.ActiveCfg = Release|x64
+		{7BC75D8F-F2BF-4D8B-B200-6AA2BF72678F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {252910B4-9880-4D69-B8A5-D37A360963FF}
+	EndGlobalSection
+EndGlobal

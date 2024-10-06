@@ -1,0 +1,127 @@
+g++ LidDrivenCavity3D.cpp D3Q15.cpp BoltzmannSolver.cpp -o LBM -lm -lX11
+./LBM
+
+#include <GL/glew.h>
+#include <GL/freeglut.h>
+#include <cmath>
+#include <cstdlib>
+#include "SingleCore/D2Q9.hpp"
+
+// Lattice size and simulation parameters
+int LatticeSize = 10;
+float LidVelocity = 1.0f;
+
+// Simulation Data (placeholders)
+float Temperature[100]; // Temperature grid
+float U[100];           // Velocity x-component
+float V[100];           // Velocity y-component
+
+// Function to interpolate color based on density (temperature)
+void ColorLerp(float density)
+{
+    float r = 0.0f;
+    float g = density; // Interpolate towards cyan (0,1,1)
+    float b = 1.0f;
+    glColor4f(r, g, b, density); // Set interpolated color
+}
+
+// Function to normalize a 2D vector
+void Normalize(float* u, float* v)
+{
+    float magnitude = sqrt((*u) * (*u) + (*v) * (*v));
+    if (magnitude > 0) {
+        *u /= magnitude;
+        *v /= magnitude;
+    }
+}
+
+// OpenGL rendering function
+void OnDraw()
+{
+    glClear(GL_COLOR_BUFFER_BIT); // Clear the buffer
+
+    for (int x = 0; x < LatticeSize; x++)
+    {
+        for (int y = 0; y < LatticeSize; y++) 
+        {
+            int dc = x + y * LatticeSize;
+
+            // Calculate origin for the grid cell
+            float originX = x / 2.0f;
+            float originY = y / 2.0f;
+
+            // Get temperature and velocity at the current grid point
+            float density = Temperature[dc];
+            float u = U[dc];
+            float v = V[dc];
+
+            // Set color based on temperature (density)
+            ColorLerp(density);
+
+            // Draw a small rectangle for temperature
+            glBegin(GL_QUADS); // Drawing a small square at the origin
+            glVertex2f(originX - 0.1f, originY - 0.1f);
+            glVertex2f(originX + 0.1f, originY - 0.1f);
+            glVertex2f(originX + 0.1f, originY + 0.1f);
+            glVertex2f(originX - 0.1f, originY + 0.1f);
+            glEnd();
+
+            // Normalize the velocity and scale it for drawing
+            Normalize(&u, &v);
+            float scale = sqrt(u * u + v * v) / LidVelocity;
+
+            // Set color for velocity vector (magenta)
+            glColor3f(1.0f, 0.0f, 1.0f);
+
+            // Draw velocity vector as a line (from origin)
+            glBegin(GL_LINES);
+            glVertex2f(originX, originY); // Start of the line
+            glVertex2f(originX + u * scale, originY + v * scale); // End of the line
+            glEnd();
+        }
+    }
+
+    glutSwapBuffers(); // Swap the buffers to display the result
+}
+
+// OpenGL setup function
+void OnInit()
+{
+    // Set the clear color (background) to white
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+    // Initialize the temperature and velocity arrays (random data)
+    for (int i = 0; i < 100; i++)
+    {
+        Temperature[i] = (float)i / 100.0f; // Gradient for visualization
+        U[i] = (float)(rand() % 100) / 100.0f - 0.5f; // Random x-velocity
+        V[i] = (float)(rand() % 100) / 100.0f - 0.5f; // Random y-velocity
+    }
+}
+
+// Main function
+int main(int argc, char** argv)
+{
+    // Initialize GLUT
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("OpenGL Lattice Visualization");
+
+    // Initialize GLEW
+    glewInit();
+
+    // Set up the drawing function and initialization
+    glutDisplayFunc(OnDraw);
+    OnInit();
+
+    // Set up 2D orthographic projection
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, LatticeSize / 2.0f, 0, LatticeSize / 2.0f); // Adjust to lattice size
+
+    // Enter the GLUT main loop
+    glutMainLoop();
+
+    return 0;
+}

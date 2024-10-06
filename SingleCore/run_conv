@@ -1,0 +1,2 @@
+g++ NaturalConvection.cpp D2Q9.cpp BoltzmannSolver.cpp -o LBM -lm -lX11
+./LBM

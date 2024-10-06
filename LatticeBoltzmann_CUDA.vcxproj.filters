@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SingleCore">
+      <UniqueIdentifier>{b3df4061-4ca4-44eb-965e-d2bcd39d3660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SingleCore\Core">
+      <UniqueIdentifier>{37d9790f-d5ad-4e1f-ba90-994fa69b91df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SingleCore\Velocity Set">
+      <UniqueIdentifier>{1de42bb6-dbc5-480e-ba36-462953eaf64e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SingleCore\Cases">
+      <UniqueIdentifier>{92ac27da-e0c3-4da7-91f5-48b95633cc2e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>SingleCore</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleCore\BoltzmannSolver.cpp">
+      <Filter>SingleCore\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleCore\D2Q9.cpp">
+      <Filter>SingleCore\Velocity Set</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SingleCore\BoltzmannSolver.hpp">
+      <Filter>SingleCore\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleCore\D2Q9.hpp">
+      <Filter>SingleCore\Velocity Set</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleCore\vector3d.hpp">
+      <Filter>SingleCore\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingleCore\run_atmos">
+      <Filter>SingleCore</Filter>
+    </None>
+    <None Include="SingleCore\run_conv">
+      <Filter>SingleCore</Filter>
+    </None>
+    <None Include="SingleCore\run_ldc">
+      <Filter>SingleCore</Filter>
+    </None>
+    <None Include="SingleCore\run_ldc3">
+      <Filter>SingleCore</Filter>
+    </None>
+  </ItemGroup>
+</Project>

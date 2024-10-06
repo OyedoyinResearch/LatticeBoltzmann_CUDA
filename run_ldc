@@ -1,0 +1,8 @@
+g++ SingleCore/main.cpp SingleCore/D2Q9.cpp SingleCore/BoltzmannSolver.cpp -o LBM
+-I./External/freeglut/include
+-L./External/freeglut/lib
+-I./External/glew/include 
+-L./External/glew/lib 
+-lm -lGL -lGLU -lglut -lGLEW
+
+./LBM

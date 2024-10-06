@@ -1,7 +1,7 @@
 #include <cmath>
 #include <cstdlib>
-#include "External/glew/include/GL/glew.h"
-#include "External/freeglut/include/GL/freeglut.h"
+#include <GL/glew.h>
+#include <GL/freeglut.h>
 #include "SingleCore/D2Q9.hpp"
 
 // Lattice Parameters

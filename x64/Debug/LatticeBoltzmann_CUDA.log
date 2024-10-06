@@ -1,0 +1,6 @@
+﻿  main.cpp
+H:\CUDA\LatticeBoltzmann_CUDA\main.cpp(50,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+H:\CUDA\LatticeBoltzmann_CUDA\main.cpp(64,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\CUDA\LatticeBoltzmann_CUDA\main.cpp(65,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\CUDA\LatticeBoltzmann_CUDA\main.cpp(66,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  LatticeBoltzmann_CUDA.vcxproj -> H:\CUDA\LatticeBoltzmann_CUDA\x64\Debug\LatticeBoltzmann_CUDA.exe
